@@ -5,8 +5,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [KeyboardButton(text=" دونده باهوش!🏃‍♂️🏃‍♂️", web_app=WebAppInfo(url="https://baazigooshi.com/about-game/887")),
         KeyboardButton(text=" کلمه چین!🧩🔠️",
-                        web_app=WebAppInfo(url="https://baazigooshi.com/about-game/1100")),
-        KeyboardButton(text=" ضربه زدن به خرگوش!🐰🥊",
+                        web_app=WebAppInfo(url="https://baazigooshi.com/about-game/1100"))],
+        [KeyboardButton(text=" ضربه زدن به خرگوش!🐰🥊",
                         web_app=WebAppInfo(url="https://baazigooshi.com/about-game/902")),
         KeyboardButton(text=" پک من!👻👾",
                         web_app=WebAppInfo(url="https://baazigooshi.com/about-game/1056"))],
