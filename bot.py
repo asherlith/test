@@ -3,12 +3,12 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
-        [KeyboardButton(text="بازی دونده باهوش!🏃‍♂️🏃‍♂️", web_app=WebAppInfo(url="https://baazigooshi.com/about-game/887")),
-        KeyboardButton(text="بازی کلمه چین!🧩🔠️",
+        [KeyboardButton(text=" دونده باهوش!🏃‍♂️🏃‍♂️", web_app=WebAppInfo(url="https://baazigooshi.com/about-game/887")),
+        KeyboardButton(text=" کلمه چین!🧩🔠️",
                         web_app=WebAppInfo(url="https://baazigooshi.com/about-game/1100")),
-        KeyboardButton(text="بازی ضربه زدن به خرگوش!🐰🥊",
+        KeyboardButton(text=" ضربه زدن به خرگوش!🐰🥊",
                         web_app=WebAppInfo(url="https://baazigooshi.com/about-game/902")),
-        KeyboardButton(text="بازی پک من!👻👾",
+        KeyboardButton(text=" پک من!👻👾",
                         web_app=WebAppInfo(url="https://baazigooshi.com/about-game/1056"))],
         [KeyboardButton(text="باز کردن سایت🌐", web_app=WebAppInfo(url="https://baazigooshi.com"))],
         [KeyboardButton(text="ورود به تورنومنت🍻🏆🥇", web_app=WebAppInfo(url="https://baazigooshi.com/tournament"))]
