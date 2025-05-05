@@ -9,8 +9,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         KeyboardButton(text="بازی ضربه زدن به خرگوش!🐰🥊",
                         web_app=WebAppInfo(url="https://baazigooshi.com/about-game/902")),
         KeyboardButton(text="بازی پک من!👻👾",
-                        web_app=WebAppInfo(url="https://baazigooshi.com/about-game/1056"))]
-        [KeyboardButton(text="باز کردن سایت🌐", web_app=WebAppInfo(url="https://baazigooshi.com"))]
+                        web_app=WebAppInfo(url="https://baazigooshi.com/about-game/1056"))],
+        [KeyboardButton(text="باز کردن سایت🌐", web_app=WebAppInfo(url="https://baazigooshi.com"))],
         [KeyboardButton(text="ورود به تورنومنت🍻🏆🥇", web_app=WebAppInfo(url="https://baazigooshi.com/tournament"))]
 
     ]
