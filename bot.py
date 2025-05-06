@@ -5,7 +5,7 @@ from telegram import Update, WebAppInfo, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 # --- تنظیمات ---
-BOT_TOKEN = "توکن_بات_تو_اینجا"
+BOT_TOKEN = "7796483522:AAFKdZHQ_CgTS-UTXIfkdboRRYbVOHakO0I"
 APP_URL = "https://your-app-name.onrender.com"  # دامنه‌ای که Render بهت داده
 WEBHOOK_URL = f"{APP_URL}/webhook"
 
