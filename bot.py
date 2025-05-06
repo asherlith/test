@@ -1,32 +1,37 @@
-import threading
 import requests
-from flask import Flask
+import threading
+from flask import Flask, request
 from telegram import Update, WebAppInfo, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 # --- تنظیمات ---
-BOT_TOKEN = "7796483522:AAFKdZHQ_CgTS-UTXIfkdboRRYbVOHakO0I"
+BOT_TOKEN = "توکن_بات_تو_اینجا"
+APP_URL = "https://your-app-name.onrender.com"  # دامنه‌ای که Render بهت داده
+WEBHOOK_URL = f"{APP_URL}/webhook"
+
+# حذف Webhook قبلی و تنظیم جدید
 DELETE_WEBHOOK_URL = f"https://api.telegram.org/bot{BOT_TOKEN}/deleteWebhook"
+SET_WEBHOOK_URL = f"https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url={WEBHOOK_URL}"
 
-# --- حذف webhook قبلی ---
 try:
-    response = requests.get(DELETE_WEBHOOK_URL)
-    if response.status_code == 200:
-        print("✅ Webhook حذف شد.")
-    else:
-        print(f"⚠️ حذف Webhook با خطا مواجه شد: {response.text}")
+    requests.get(DELETE_WEBHOOK_URL)
+    requests.get(SET_WEBHOOK_URL)
+    print("✅ Webhook تنظیم شد.")
 except Exception as e:
-    print(f"❌ خطا در حذف Webhook: {e}")
+    print(f"❌ خطا در تنظیم Webhook: {e}")
 
-# --- Flask app برای alive نگه‌داشتن سرویس ---
+# --- Flask app ---
 flask_app = Flask(__name__)
 
 @flask_app.route('/')
 def index():
-    return 'Bot is alive!'
+    return "Bot is alive!"
 
-def run_flask():
-    flask_app.run(host='0.0.0.0', port=5000)
+@flask_app.route('/webhook', methods=['POST'])
+def webhook():
+    update = Update.de_json(request.get_json(force=True), app.bot)
+    app.update_queue.put(update)
+    return 'OK'
 
 # --- بات تلگرام ---
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -43,10 +48,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     )
 
-# اجرای Flask در Thread جدا
-threading.Thread(target=run_flask).start()
-
-# ساخت اپ تلگرام و اجرای polling
+# --- ساخت اپ ---
 app = Application.builder().token(BOT_TOKEN).build()
 app.add_handler(CommandHandler("start", start))
-app.run_polling()
+
+# اجرای Flask در Thread جدا
+def run_flask():
+    flask_app.run(host="0.0.0.0", port=5000)
+
+if __name__ == '__main__':
+    threading.Thread(target=run_flask).start()
+    app.run_polling(stop_signals=None)  # polling فقط برای هندل queue، نه برای گرفتن پیام
