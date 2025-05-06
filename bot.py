@@ -5,7 +5,7 @@ from telegram import Update, WebAppInfo, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 # --- تنظیمات ---
-BOT_TOKEN = "7796483522:AAE_5jtLXJZi_I8nugfrSIqZgvtCh6pZRaQ"
+BOT_TOKEN = "7796483522:AAFKdZHQ_CgTS-UTXIfkdboRRYbVOHakO0I"
 DELETE_WEBHOOK_URL = f"https://api.telegram.org/bot{BOT_TOKEN}/deleteWebhook"
 
 # --- حذف webhook قبلی ---
